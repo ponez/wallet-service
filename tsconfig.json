@@ -10,6 +10,26 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
+    "paths": {
+      "@src/*": [
+        "src/*"
+      ],
+      "@user/*": [
+        "src/user/*"
+      ],
+      "@transaction/*": [
+        "src/transaction/*"
+      ],
+      "@infrastructure/*": [
+        "src/infrastructure/*"
+      ],
+      "@typeorm-module/*": [
+        "src/infrastructure/typeorm/*"
+      ],
+      "@logger-interceptor/*": [
+        "src/infrastructure/logger/*"
+      ]
+    },
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": false,
