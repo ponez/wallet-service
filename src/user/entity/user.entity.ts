@@ -5,11 +5,11 @@ import { IsInt, Min } from 'class-validator';
 @ObjectType()
 @Entity()
 export class User {
-  @Field((type) => Int)
+  @Field(() => Int)
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Field((type) => Int)
+  @Field(() => Int)
   @Column({ type: 'int', default: 0 })
   @IsInt()
   @Min(0)

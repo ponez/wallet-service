@@ -10,16 +10,16 @@ import { IsInt } from 'class-validator';
 @ObjectType()
 @Entity()
 export class Transaction {
-  @Field((type) => Int)
+  @Field(() => Int)
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Field((type) => Int)
+  @Field(() => Int)
   @Column({ type: 'int' })
   @IsInt()
   userId: number;
 
-  @Field((type) => Int)
+  @Field(() => Int)
   @Column({ type: 'int' })
   @IsInt()
   amount: number;
