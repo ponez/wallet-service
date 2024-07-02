@@ -1,9 +1,9 @@
-import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { Field, Float, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class TransactionResponseDto {
   @Field(() => String)
   date: string;
-  @Field(() => Int)
+  @Field(() => Float)
   total_amount: number;
 }
