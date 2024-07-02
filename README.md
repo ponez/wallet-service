@@ -1,73 +1,108 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+Clone the Repository:
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+bash
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+git clone https://github.com/ponez/wallet-service
+cd wallet-service
 
-## Description
+Install Dependencies:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+npm install
 
-## Installation
+Set Up Environment Variables:
 
-```bash
-$ npm install
+    Confgire .env variables
+
+Run the Application:
+
+Start the NestJS app:
+
+        npm run start
+      
+The GraphQL playgroun will be accessible at http://localhost:3000/graphql
+
+Usage
+GraphQL API Endpoints
+
+    GraphQL Playground: Use the GraphQL Playground to interact with the API.
+        Open your browser and go to http://localhost:3000/graphql (or the respective port).
+        Use the provided schema and auto-generated documentation to explore available queries, mutations, and types.
+
+Running Tests
+
+Unit Tests: Execute unit tests for individual components:
+Ensure all unit tests pass to verify the functionality of isolated components.
+
+
+```
+yarn test
+```
+or 
+```
+npm run test
 ```
 
-## Running the app
+  
 
-```bash
-# development
-$ npm run start
+End-to-End (e2e) Tests: Perform comprehensive tests across the entire GraphQL API:
 
-# watch mode
-$ npm run start:dev
 
-# production mode
-$ npm run start:prod
+```
+yarn test:e2e
+```
+or 
+```
+npm run test:e2e
 ```
 
-## Test
+This will run integration tests using Apollo Server integration testing and Supertest to validate API endpoints and interactions.
 
-```bash
-# unit tests
-$ npm run test
+Project Structure
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+my-nestjs-graphql-project/
+├── node_modules/                   # Dependencies installed by npm or yarn
+├── src/                            # Main source directory for the application
+│   ├── app.module.ts               # Main application module
+│   ├── main.ts                     # Entry point for the application
+│   ├── user/                       # User feature module
+│   │   ├── user.module.ts          # User module definition
+│   │   ├── user.service.ts         # User service for business logic
+│   │   ├── user.resolver.ts        # GraphQL resolver for user operations
+│   │   ├── dto/                    # Data Transfer Objects for user
+│   │   │   ├── get-balance.dto.ts  # DTO for getting user balance
+│   │   │   ├── update-balance.dto.ts # DTO for updating user balance
+│   │   ├── repository/             
+│   │   │   ├── user.repository.ts # Repository for user DB logic
+│   │   ├── entity/             
+│   │   │   ├── user.entity.ts      # Entity Model for user
+│   │   ├── test/                   # Unit-test related to user
+│   ├── transaction/                # Transaction feature module
+│   │   ├── transaction.module.ts   # Transaction module definition
+│   │   ├── transaction.service.ts  # Transaction service for business logic
+│   │   ├── transaction.resolver.ts # GraphQL resolver for transaction operations
+│   │   ├── dto/                    # Data Transfer Objects for transaction
+│   │   │   ├── create-transaction.dto.ts # DTO for creating a transaction
+│   │   │   ├── daily-totals.dto.ts # DTO for daily totals
+│   │   ├── repository/             
+│   │   │   ├── transaction.repository.ts # Repository for transaction DB logic
+│   │   ├── entity/             
+│   │   │   ├── transaction.entity.ts      # Entity Model for transaction
+│   │   ├── test/                   # Unit-test related to transaction
+|   ├── infrastructure/
+|   |   ├── logger/
+|   |   |  ├── logger.ts            # Logger interceptor for every request
+|   |   ├── typeorm/
+|   |   |  ├── typeorm.module.ts    # Typeorm module
+|   |   ├── util/
+|   |   |  ├── numeric.transformer.ts # Transformer for database responses 
+├── test/                           # Directory for end-to-end tests
+│   ├── user.e2e-spec.ts            # E2E tests for user feature
+│   ├── transaction.e2e-spec.ts     # E2E tests for transaction feature
+├── .eslintrc.js                    # ESLint configuration
+├── .prettierrc                     # Prettier configuration
+├── jest.config.js                  # Jest configuration for running tests
+├── package.json                    # Project metadata and dependencies
+├── tsconfig.json                   # TypeScript configuration
+└── README.md                       # Project documentation
+```
