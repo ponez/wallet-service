@@ -24,14 +24,6 @@ describe('UserResolver (e2e) {Supertest}', () => {
   describe(gql, () => {
     describe('user balance', () => {
       it('should return user balance', async () => {
-        const UPDATE_BALANCE = `
-          mutation UpdateBalance($updateBalanceDto: UpdateBalanceDto!) {
-            updateBalance(UpdateBalanceDto: $updateBalanceDto) {
-              reference_id
-            }
-          }
-        `;
-
         const userId = 1;
 
         const GET_BALANCE = `
