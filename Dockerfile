@@ -1,10 +1,10 @@
-FROM node:14
+FROM node:20-bullseye
 
 WORKDIR /usr/src/app
 
 COPY . .
 
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 RUN npm run build
 
