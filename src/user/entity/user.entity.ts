@@ -1,6 +1,7 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { IsInt, Min } from 'class-validator';
+import { IsNumber } from 'class-validator';
+import { ColumnNumericTransformer } from '@infrastructure/util/numeric.transformer';
 
 @ObjectType()
 @Entity()
@@ -10,8 +11,15 @@ export class User {
   id: number;
 
   @Field(() => Int)
-  @Column({ type: 'int', default: 0 })
-  @IsInt()
-  @Min(0)
+  @Column('numeric', {
+    precision: 7,
+    scale: 2,
+    transformer: new ColumnNumericTransformer(),
+  })
+  @IsNumber({
+    allowInfinity: false,
+    allowNaN: false,
+    maxDecimalPlaces: 2,
+  })
   balance: number;
 }

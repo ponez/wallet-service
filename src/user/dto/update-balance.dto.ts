@@ -1,5 +1,5 @@
-import { Field, InputType, Int } from '@nestjs/graphql';
-import { IsInt, Min } from 'class-validator';
+import { Field, Float, InputType, Int } from '@nestjs/graphql';
+import { IsInt, IsNumber, Min } from 'class-validator';
 
 @InputType()
 export class UpdateBalanceDto {
@@ -8,7 +8,11 @@ export class UpdateBalanceDto {
   @Min(1)
   userId: number;
 
-  @Field(() => Int)
-  @IsInt()
+  @Field(() => Float)
+  @IsNumber({
+    allowInfinity: false,
+    allowNaN: false,
+    maxDecimalPlaces: 2,
+  })
   amount: number;
 }

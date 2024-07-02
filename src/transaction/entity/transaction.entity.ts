@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { IsInt } from 'class-validator';
+import { ColumnNumericTransformer } from "@infrastructure/util/numeric.transformer";
 
 @ObjectType()
 @Entity()
@@ -20,7 +21,11 @@ export class Transaction {
   userId: number;
 
   @Field(() => Int)
-  @Column({ type: 'int' })
+  @Column('numeric', {
+    precision: 7,
+    scale: 2,
+    transformer: new ColumnNumericTransformer(),
+  })
   @IsInt()
   amount: number;
 
